@@ -1,0 +1,82 @@
+body { background:#fff; color:#000; font:15px/1.4 system-ui, sans-serif; margin:2rem; }
+a { color:#000; }
+table { border-collapse:collapse; width:100%; }
+th, td { text-align:left; vertical-align:top; padding:.4rem .6rem; border-bottom:1px solid #ccc; }
+th { border-bottom:2px solid #000; font-weight:600; }
+.mini { width:80px; height:80px; object-fit:cover; display:block; }
+.vide { width:80px; height:80px; border:1px solid #ccc; }
+dl { display:grid; grid-template-columns:max-content 1fr; gap:.3rem 1.2rem; }
+dt { font-weight:600; }
+dd { margin:0; }
+.form { display:grid; gap:.6rem; max-width:32rem; }
+.form label { display:grid; gap:.2rem; font-weight:600; }
+.form label.case { display:flex; gap:.4rem; align-items:center; }
+input:not([type=checkbox]):not([type=file]) { font:inherit; padding:.3rem; border:1px solid #000; background:#fff; color:#000; }
+button, a.bouton { font:inherit; padding:.3rem .8rem; border:1px solid #000; background:#fff; color:#000; cursor:pointer;
+                   text-decoration:none; display:inline-block; }
+textarea { font:inherit; padding:.3rem; border:1px solid #000; background:#fff; color:#000; }
+.defile { overflow-x:auto; }
+td.edit { white-space:pre-line; min-width:4rem; cursor:text; }
+td.edit:focus, .nom-col:focus { outline:2px solid #000; outline-offset:-2px; }
+td.err { outline:2px dashed #000; }
+.nom-col { cursor:text; }
+.poignee { cursor:grab; margin-right:.3rem; user-select:none; }
+th.cible { outline:2px solid #000; outline-offset:-2px; }
+.vignette { display:flex; align-items:flex-start; }
+tr.glissee { opacity:.3; }
+button.discret { border:0; padding:0; background:none; color:#999; font-size:.85em; }
+button.discret:hover, a.discret:hover { color:#000; }
+a.discret { color:#999; font-size:.85em; text-decoration:none; }
+th button { padding:0 .3rem; font-weight:400; }
+.texte { white-space:pre-line; }
+.erreur { border:1px solid #000; padding:.4rem; }
+
+/* En haut à droite : langue et mode édition */
+.bascule { position:fixed; top:1rem; right:1.5rem; display:flex; gap:1.2rem; align-items:center;
+           background:#fff; padding:.2rem .4rem; z-index:10; }
+.bascule label { display:flex; gap:.4rem; align-items:center; cursor:pointer; user-select:none; }
+.bascule input { appearance:none; width:2.4rem; height:1.3rem; border:1px solid #000; border-radius:1rem;
+                 position:relative; cursor:pointer; margin:0; background:#fff; }
+.bascule input::before { content:""; position:absolute; top:2px; left:2px; width:calc(1.3rem - 6px);
+                         height:calc(1.3rem - 6px); border-radius:50%; background:#000; transition:left .15s; }
+.bascule input:checked { background:#000; }
+.bascule input:checked::before { left:calc(100% - 1.3rem + 4px); background:#fff; }
+.langues a { text-decoration:none; color:#999; }
+.langues a[aria-current] { color:#000; }
+html:not(.edition) .edition-seule { display:none; }
+
+/* Galerie de photos et visionneuse */
+.galerie { display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:.6rem; margin-top:1.5rem; }
+.galerie figure { margin:0; display:grid; gap:.3rem; align-content:start; }
+.galerie img { width:100%; aspect-ratio:1; object-fit:cover; cursor:zoom-in; display:block; }
+.galerie figcaption { display:flex; gap:.3rem; flex-wrap:wrap; align-items:center; font-size:.85em; }
+.galerie figcaption button { padding:0 .4rem; }
+.galerie figure:first-child .couv,
+.galerie figure:not(:first-child) .etiquette-couv { display:none; }
+.etiquette-couv { font-weight:600; }
+html.edition .galerie figure { cursor:grab; }
+.galerie figure.glissee { opacity:.3; }
+.aide { color:#666; }
+#lb { display:none; position:fixed; inset:0; background:#fff; align-items:center; justify-content:center; z-index:20; }
+#lb.on { display:flex; }
+#lb img { max-width:90vw; max-height:90vh; }
+#lb button { position:absolute; background:none; border:0; font-size:2rem; cursor:pointer; color:#000; }
+#lb .fermer { top:1rem; right:1.5rem; } #lb .prec { left:1rem; } #lb .suiv { right:1rem; }
+
+/* Impression et export PDF : on cache tout ce qui sert à l'écran seulement */
+@media print {
+  @page { margin:1.5cm; }
+  body { margin:0; font-size:10pt; }
+  .bascule, .no-print, .edition-seule, #lb { display:none !important; }
+  a { text-decoration:none; }
+  .defile { overflow:visible; }
+  table { font-size:8pt; }
+  th, td { padding:.2rem .3rem; }
+  tr { break-inside:avoid; }
+  td.err { outline:none; }
+  .mini, .vide { width:50px; height:50px; }
+  .galerie { grid-template-columns:repeat(3, 1fr); }
+  .galerie img { object-fit:contain; }
+  .galerie figure { break-inside:avoid; }
+  .fiche + .fiche { break-before:page; }
+}

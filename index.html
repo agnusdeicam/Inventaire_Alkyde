@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventaire Alkyde en collection</title>
+<link rel="stylesheet" href="style.css">
+<style>@media print { @page { size:A4 landscape; } }</style>
+</head>
+<body>
+<div class="bascule">
+  <span class="langues">
+    <a href="index.html" aria-current="true">FR</a> /
+    <a href="en/index.html" >EN</a>
+  </span>
+  <input type="checkbox" id="mode-edition" hidden>
+</div>
+
+
+<h1><span class="nom-col" id="titre-site">Inventaire des œuvres alkydes brillantes en collection</span></h1>
+<p class="edition-seule"><a href="#">+ Ajouter une œuvre</a> — cliquez sur une cellule pour la modifier (Entrée pour valider, Échap pour annuler), glissez ⠿ pour déplacer une colonne ou une ligne.</p>
+<p class="no-print"><button type="button" class="discret" onclick="print()">Exporter en PDF</button></p>
+
+<div class="defile">
+<table id="tableau">
+  <thead>
+    <tr>
+      <th></th>
+      <th>N° inventaire</th>
+      
+      <th class="col" data-cle="institution"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Collection</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="artiste"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Artiste</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="titre"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Titre</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="date"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Date</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="dimensions"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Dimensions</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="classification"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Classification (matériau)</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="support"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Type de support</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="preparation"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Préparation</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="couleur_preparation"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Couleur de la préparation</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="aspect_preparation"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Aspect de la préparation</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="brillance_de_la_cp"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Brillance de la CP 1-10</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="mode_d_application_de_la_cp"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Mode d&#39;application de la CP</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="epaisseur_de_la_cp"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">Epaisseur de la CP</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="problematiques_de_restauration"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">problématiques de conservation</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th class="col" data-cle="ancienne_restauration"><span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la colonne">⠿</span><span class="nom-col">ancienne restauration</span>
+        <button type="button" class="suppr-col edition-seule" title="Supprimer la colonne">×</button></th>
+      
+      <th><button type="button" id="ajout-col" class="edition-seule">+ Colonne</button></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr data-id="a3973a38">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/a3973a38.html">
+          <img class="mini" src="photos/a3973a38/https___smak.be_volumes_collection_5010d1d8-6bd0-9c6e-7532-8b5fc866c46c.jpg" alt="Red and Black Relief">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">299</td>
+      
+        
+        <td class="edit" data-champ="institution">SMAK</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Amédée Cortier</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Red and Black Relief</td>
+        
+      
+        
+        <td class="edit" data-champ="date">1970-1971</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">102 x 81 x 5,45 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Panneau en bois</td>
+        
+      
+        
+        <td class="edit" data-champ="support">Bois</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" checked></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation">Blanche</td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation">Lisse, appliqué a la brosse</td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">Irrégulier</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">Brosse</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp">plusieurs couches visibles dans les lacunes</td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">Problématique lié à l&#39;aspect de surface. Hétérogénité de brillance. Traces de nettoyage.</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">Retouche de micro lacunes</td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="cea57c80">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/cea57c80.html">
+          <img class="mini" src="photos/cea57c80/https___smak.be_volumes_collection_558fe867-eda2-1009-4be1-ff4abcf05ca5.jpg" alt="Relief Bleu et Noir">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">1879</td>
+      
+        
+        <td class="edit" data-champ="institution">SMAK</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Amédée Cortier</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Relief Bleu et Noir</td>
+        
+      
+        
+        <td class="edit" data-champ="date">1970-1971</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">102 x 81 x 5,45 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Panneau en bois</td>
+        
+      
+        
+        <td class="edit" data-champ="support">Bois</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" checked></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation">Blanche</td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation">Lisse</td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">9</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">Brosse</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">Non</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">Retouche</td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="9689b819">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/9689b819.html">
+          <img class="mini" src="photos/9689b819/P1010231.JPG" alt="Sculpture Peinte n. 20">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">13319</td>
+      
+        
+        <td class="edit" data-champ="institution">Réserve FWB</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Francis Vaes</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Sculpture Peinte n. 20</td>
+        
+      
+        
+        <td class="edit" data-champ="date">1974</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">164 x 140 x 95 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Assemblage peint à l&#39;émail synthétique</td>
+        
+      
+        
+        <td class="edit" data-champ="support">Bois</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" checked></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation">Crème</td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation">Lisse, fine</td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">7</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">Traces de brosse</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp">Plusieurs couches</td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration"></td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration"></td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="5a947a76">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/5a947a76.html">
+          <img class="mini" src="photos/5a947a76/P1010238.JPG" alt="Sculpture II">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">12270</td>
+      
+        
+        <td class="edit" data-champ="institution">Réserve FWB</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Michel Renard</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Sculpture II</td>
+        
+      
+        
+        <td class="edit" data-champ="date">s.d.</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">100x 48 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Plaques d&#39;acier pliées et émaillées</td>
+        
+      
+        
+        <td class="edit" data-champ="support">planches acier</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" checked></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration"></td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration"></td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="fd8338f1">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/fd8338f1.html">
+          <img class="mini" src="photos/fd8338f1/P1010244.JPG" alt="Sculpture Chromatique n.6">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">12296/1-2</td>
+      
+        
+        <td class="edit" data-champ="institution">Réserve FWB</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Francis Vaes</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Sculpture Chromatique n.6</td>
+        
+      
+        
+        <td class="edit" data-champ="date">1971</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">219 x 120 x 20 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Laque sur masonite</td>
+        
+      
+        
+        <td class="edit" data-champ="support">Masonite</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" checked></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation">Crème</td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">Non</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">Non</td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="0f13615b">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/0f13615b.html">
+          <img class="mini" src="photos/0f13615b/P1010254.JPG" alt="Colonne Bleue">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">13818</td>
+      
+        
+        <td class="edit" data-champ="institution">Réserve FWB</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Marie-Paule Haar</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Colonne Bleue</td>
+        
+      
+        
+        <td class="edit" data-champ="date">1970</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">180 x 46 x 37 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Metal chromé, peinture acrylique</td>
+        
+      
+        
+        <td class="edit" data-champ="support">Assemblage métal</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" ></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">9</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">Pas de traces d&#39;application, aérographe ?</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">Coulures, taches, lacunes, rayures</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">Non</td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="0365cee7">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/0365cee7.html">
+          <img class="mini" src="photos/0365cee7/0487.jpg" alt="Gentse School">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">Cera_0487</td>
+      
+        
+        <td class="edit" data-champ="institution">M-Museum Leuven</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Dieter School</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Gentse School</td>
+        
+      
+        
+        <td class="edit" data-champ="date">2020</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">40 x 50 xm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">bois, &#39;lakverf&#39; et peinture à l&#39;huile</td>
+        
+      
+        
+        <td class="edit" data-champ="support">MDF</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" ></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation">Crème</td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation">Texturé</td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">7</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">pinceau</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp">plusieurs couches</td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">Non</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">Non</td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="ff7898a5">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/ff7898a5.html">
+          <div class="vide"></div>
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">/</td>
+      
+        
+        <td class="edit" data-champ="institution">Propriétaire privé</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Sol Lewitt</td>
+        
+      
+        
+        <td class="edit" data-champ="titre"></td>
+        
+      
+        
+        <td class="edit" data-champ="date"></td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions"></td>
+        
+      
+        
+        <td class="edit" data-champ="classification">métal émaillé</td>
+        
+      
+        
+        <td class="edit" data-champ="support"></td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" ></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation"></td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">5</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">Aérographe?</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp"></td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">Mauvaise intégration d&#39;ancien mastic et retouche. état de surface abrasé</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">ancien mastics et retouches</td>
+        
+      
+      <td></td>
+    </tr>
+    
+    <tr data-id="1dcbf1b0">
+      <td><div class="vignette">
+        <span class="poignee edition-seule" draggable="true" title="Glisser pour déplacer la ligne">⠿</span>
+        <a href="oeuvre/1dcbf1b0.html">
+          <img class="mini" src="photos/1dcbf1b0/IMG_7389.JPG" alt="Forces Mouvantes">
+          
+        </a>
+      </div></td>
+      <td class="edit" data-champ="numero_inventaire">/</td>
+      
+        
+        <td class="edit" data-champ="institution">Collection exposé Musée René Magritte</td>
+        
+      
+        
+        <td class="edit" data-champ="artiste">Jean Dewasne</td>
+        
+      
+        
+        <td class="edit" data-champ="titre">Forces Mouvantes</td>
+        
+      
+        
+        <td class="edit" data-champ="date">1970</td>
+        
+      
+        
+        <td class="edit" data-champ="dimensions">50 x 65 cm</td>
+        
+      
+        
+        <td class="edit" data-champ="classification">Laque glycerophtalique sur panneau</td>
+        
+      
+        
+        <td class="edit" data-champ="support">panneau en bois</td>
+        
+      
+        
+        <td><input type="checkbox" data-champ="preparation" checked></td>
+        
+      
+        
+        <td class="edit" data-champ="couleur_preparation">Crème</td>
+        
+      
+        
+        <td class="edit" data-champ="aspect_preparation">Lisse</td>
+        
+      
+        
+        <td class="edit" data-champ="brillance_de_la_cp">Variance dépendant des aplats. Différents types de résines semblent être employées.</td>
+        
+      
+        
+        <td class="edit" data-champ="mode_d_application_de_la_cp">brosse</td>
+        
+      
+        
+        <td class="edit" data-champ="epaisseur_de_la_cp">plusieurs couches</td>
+        
+      
+        
+        <td class="edit" data-champ="problematiques_de_restauration">non</td>
+        
+      
+        
+        <td class="edit" data-champ="ancienne_restauration">pas visible</td>
+        
+      
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+
+
+
+<script>
+  const T = {"aide_liste": "\u2014 cliquez sur une cellule pour la modifier (Entr\u00e9e pour valider, \u00c9chap pour annuler), glissez \u283f pour d\u00e9placer une colonne ou une ligne.", "aide_photos": "Glissez les photos pour changer leur ordre. La premi\u00e8re est la photo de couverture.", "ajout_col": "+ Colonne", "ajouter": "+ Ajouter une \u0153uvre", "ajouter_photos": "Ajouter des photos", "annuler": "\u2190 Annuler", "aucune_oeuvre": "Aucune \u0153uvre pour l\u0027instant.", "confirmer_suppr_col": "Supprimer la colonne \u00ab {nom} \u00bb et toutes ses valeurs ?", "confirmer_suppr_oeuvre": "Supprimer d\u00e9finitivement cette \u0153uvre et ses photos ?", "confirmer_suppr_photo": "Supprimer cette photo ?", "couverture": "Couverture", "enregistrer": "Enregistrer", "err_numero_vide": "Le num\u00e9ro d\u0027inventaire est obligatoire.", "err_ordre": "La liste a chang\u00e9 entre-temps, rechargez la page.", "err_photos": "Les photos ont chang\u00e9 entre-temps, rechargez la page.", "exporter_pdf": "Exporter en PDF", "fermer": "Fermer", "fiche_pdf": "Cette fiche en PDF", "glisser_col": "Glisser pour d\u00e9placer la colonne", "glisser_ligne": "Glisser pour d\u00e9placer la ligne", "mettre_couverture": "Mettre en couverture", "mode_edition": "Mode \u00e9dition", "modifier_lien": "Modifier la fiche", "modifier_oeuvre": "Modifier l\u0027\u0153uvre", "nom_nouvelle_col": "Nom de la nouvelle colonne :", "non": "Non", "nouvelle_oeuvre": "Nouvelle \u0153uvre", "numero": "N\u00b0 inventaire", "oui": "Oui", "precedente": "Pr\u00e9c\u00e9dente", "retour": "\u2190 Retour \u00e0 la liste", "sans_titre": "Sans titre", "suivante": "Suivante", "suppr_col": "Supprimer la colonne", "supprimer": "Supprimer", "supprimer_oeuvre": "Supprimer l\u0027\u0153uvre", "titre_site": "Inventaire Alkyde en collection", "toutes_fiches": "Toutes les fiches en PDF"};  // textes de l'interface, dans la langue choisie
+
+  // Envoie des données au serveur (app.py) et renvoie sa réponse.
+  const envoyer = async (url, donnees) => {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                 body: JSON.stringify(donnees) });
+    const json = await r.json();
+    if (!r.ok) throw new Error(json.erreur);
+    return json;
+  };
+</script>
+
+<script>
+  // Cellules : enregistrement à la sortie de la cellule.
+  const enregistrerCellule = async (td, valeur) => {
+    try {
+      await envoyer(`/api/oeuvre/${td.closest('tr').dataset.id}`, { champ: td.dataset.champ, valeur });
+      td.classList.remove('err');
+      return true;
+    } catch (e) {
+      td.classList.add('err');
+      alert(e.message);
+      return false;
+    }
+  };
+
+  document.querySelectorAll('td.edit').forEach(td => {
+    td.addEventListener('focus', () => td.dataset.avant = td.innerText);
+    td.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); td.blur(); }
+      if (e.key === 'Escape') { td.innerText = td.dataset.avant; td.blur(); }
+    });
+    td.addEventListener('blur', async () => {
+      const valeur = td.innerText.trim();
+      if (valeur === td.dataset.avant.trim()) return;
+      if (!await enregistrerCellule(td, valeur)) td.innerText = td.dataset.avant;
+    });
+  });
+
+  document.querySelectorAll('input[type=checkbox][data-champ]').forEach(cb => {
+    cb.addEventListener('change', async () => {
+      if (!await enregistrerCellule(cb.closest('td'), cb.checked)) cb.checked = !cb.checked;
+    });
+  });
+
+  // Titre de la page : modifiable en mode édition, enregistré pour la langue affichée.
+  const titre = document.getElementById('titre-site'), titreAvant = titre.innerText.trim();
+  titre.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); titre.blur(); }
+    if (e.key === 'Escape') { titre.innerText = titreAvant; titre.blur(); }
+  });
+  titre.addEventListener('blur', async () => {
+    if (titre.innerText.trim() === titreAvant) return;
+    try { await envoyer('/api/titre', { libelle: titre.innerText }); location.reload(); }
+    catch (e) { alert(e.message); titre.innerText = titreAvant; }
+  });
+
+  // Colonnes : ajout, renommage, suppression.
+  const actionColonne = async donnees => {
+    try { await envoyer('/api/colonnes', donnees); location.reload(); }
+    catch (e) { alert(e.message); return false; }
+  };
+
+  document.getElementById('ajout-col').onclick = () => {
+    const nom = prompt(T.nom_nouvelle_col);
+    if (nom && nom.trim()) actionColonne({ action: 'ajouter', libelle: nom });
+  };
+
+  document.querySelectorAll('th.col').forEach(th => {
+    const span = th.querySelector('.nom-col'), cle = th.dataset.cle, ancien = span.innerText.trim();
+    span.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); span.blur(); }
+      if (e.key === 'Escape') { span.innerText = ancien; span.blur(); }
+    });
+    span.addEventListener('blur', async () => {
+      const nouveau = span.innerText.trim();
+      if (nouveau === ancien) return;
+      if (await actionColonne({ action: 'renommer', cle, libelle: nouveau }) === false) span.innerText = ancien;
+    });
+    th.querySelector('.suppr-col').onclick = () => {
+      if (confirm(T.confirmer_suppr_col.replace('{nom}', ancien)))
+        actionColonne({ action: 'supprimer', cle });
+    };
+  });
+
+  // Déplacement des colonnes par glisser-déposer de la poignée ⠿.
+  const ths = [...document.querySelectorAll('th.col')];
+  let glissee = null;
+  ths.forEach((th, position) => {
+    const poignee = th.querySelector('.poignee');
+    poignee.addEventListener('dragstart', e => {
+      glissee = th;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', th.dataset.cle);
+    });
+    poignee.addEventListener('dragend', () => {
+      glissee = null;
+      ths.forEach(t => t.classList.remove('cible'));
+    });
+    th.addEventListener('dragover', e => {
+      if (!glissee || glissee === th) return;
+      e.preventDefault();
+      th.classList.add('cible');
+    });
+    th.addEventListener('dragleave', () => th.classList.remove('cible'));
+    th.addEventListener('drop', e => {
+      e.preventDefault();
+      if (glissee && glissee !== th) actionColonne({ action: 'deplacer', cle: glissee.dataset.cle, position });
+    });
+  });
+
+  // Déplacement des lignes par glisser-déposer de la poignée ⠿, à côté de la vignette.
+  const tbody = document.querySelector('#tableau tbody');
+  let ligne = null;
+  tbody.querySelectorAll('.poignee').forEach(poignee => {
+    const tr = poignee.closest('tr');
+    poignee.addEventListener('dragstart', e => {
+      ligne = tr;
+      tr.classList.add('glissee');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', tr.dataset.id);
+      e.dataTransfer.setDragImage(tr, 0, 0);
+    });
+    poignee.addEventListener('dragend', async () => {
+      tr.classList.remove('glissee');
+      ligne = null;
+      try { await envoyer('/api/oeuvres/ordre', { ordre: [...tbody.rows].map(r => r.dataset.id) }); }
+      catch (e) { alert(e.message); location.reload(); }
+    });
+  });
+  // Pendant le glissement, la ligne se place au-dessus ou en dessous de celle survolée.
+  [...tbody.rows].forEach(tr => {
+    tr.addEventListener('dragover', e => {
+      if (!ligne || ligne === tr) return;
+      e.preventDefault();
+      const r = tr.getBoundingClientRect();
+      tbody.insertBefore(ligne, e.clientY > r.top + r.height / 2 ? tr.nextSibling : tr);
+    });
+    tr.addEventListener('drop', e => e.preventDefault());
+  });
+</script>
+
+<script>
+  // Mode édition : rend les cellules modifiables et affiche les contrôles. Mémorisé dans le navigateur.
+  (() => {
+    const bascule = document.getElementById('mode-edition');
+    const appliquer = actif => {
+      document.documentElement.classList.toggle('edition', actif);
+      document.querySelectorAll('td.edit, .nom-col').forEach(el =>
+        actif ? el.setAttribute('contenteditable', 'plaintext-only') : el.removeAttribute('contenteditable'));
+      document.querySelectorAll('td input[type=checkbox][data-champ]').forEach(cb => cb.disabled = !actif);
+    };
+    try { bascule.checked = false; } catch (e) {}
+    appliquer(bascule.checked);
+    bascule.addEventListener('change', () => {
+      if (!bascule.checked) document.activeElement?.blur();  // enregistre la cellule en cours
+      appliquer(bascule.checked);
+      try { localStorage.setItem('mode-edition', bascule.checked ? '1' : '0'); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
